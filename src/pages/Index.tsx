@@ -107,7 +107,11 @@ const Index = () => {
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-4 space-x-reverse">
-              <div className="text-2xl font-bold text-gradient-blue arabic-title">خدام</div>
+              <img 
+                src="/lovable-uploads/2b6c1a2c-9515-48ad-93d3-eb1712d0d847.png" 
+                alt="خدام" 
+                className="h-10 w-auto"
+              />
             </div>
             
             {/* Desktop Navigation */}
@@ -136,7 +140,13 @@ const Index = () => {
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                 <SheetHeader>
-                  <SheetTitle className="text-2xl font-bold text-gradient-blue arabic-title text-right">خدام</SheetTitle>
+                  <SheetTitle className="text-right">
+                    <img 
+                      src="/lovable-uploads/2b6c1a2c-9515-48ad-93d3-eb1712d0d847.png" 
+                      alt="خدام" 
+                      className="h-10 w-auto mr-auto"
+                    />
+                  </SheetTitle>
                 </SheetHeader>
                 <div className="flex flex-col space-y-6 mt-8">
                   <button 
@@ -488,7 +498,11 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-6 md:mb-0 text-center md:text-right">
-              <div className="text-xl sm:text-2xl font-bold text-gradient-blue arabic-title mb-2">خدام</div>
+              <img 
+                src="/lovable-uploads/2b6c1a2c-9515-48ad-93d3-eb1712d0d847.png" 
+                alt="خدام" 
+                className="h-8 w-auto mb-2 mx-auto md:mx-0"
+              />
               <p className="text-gray-400 text-sm sm:text-base">يقدم حلولاً متطورة لإدارة المخزون والمبيعات لتطوير أعمالك وتحقيق النجاح المستدام</p>
             </div>
             <div className="flex space-x-4 space-x-reverse">
