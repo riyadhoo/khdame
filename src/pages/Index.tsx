@@ -22,9 +22,18 @@ import {
   Database,
   PieChart,
   QrCode,
-  ShoppingCart
+  ShoppingCart,
+  Menu,
+  X
 } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 const Index = () => {
   const [formData, setFormData] = useState({
@@ -34,6 +43,8 @@ const Index = () => {
     message: ""
   });
 
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
@@ -41,6 +52,14 @@ const Index = () => {
       description: "سنتواصل معك في أقرب وقت ممكن",
     });
     setFormData({ email: "", fullName: "", phone: "", message: "" });
+  };
+
+  const handleNavClick = (href: string) => {
+    setMobileMenuOpen(false);
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const features = [
@@ -90,6 +109,8 @@ const Index = () => {
             <div className="flex items-center space-x-4 space-x-reverse">
               <div className="text-2xl font-bold text-gradient-blue arabic-title">خدام</div>
             </div>
+            
+            {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8 space-x-reverse">
               <a href="#home" className="text-gray-700 hover:text-blue-600 transition-colors">الرئيسية</a>
               <a href="#features" className="text-gray-700 hover:text-blue-600 transition-colors">الميزات</a>
@@ -97,9 +118,65 @@ const Index = () => {
               <a href="#pricing" className="text-gray-700 hover:text-blue-600 transition-colors">التسعير</a>
               <a href="#contact" className="text-gray-700 hover:text-blue-600 transition-colors">اتصل بنا</a>
             </div>
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-              حمل التطبيق الآن
-            </Button>
+            
+            {/* Desktop CTA Button */}
+            <div className="hidden md:block">
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                حمل التطبيق الآن
+              </Button>
+            </div>
+
+            {/* Mobile Menu */}
+            <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" className="md:hidden">
+                  <Menu className="h-6 w-6" />
+                  <span className="sr-only">Open menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                <SheetHeader>
+                  <SheetTitle className="text-2xl font-bold text-gradient-blue arabic-title text-right">خدام</SheetTitle>
+                </SheetHeader>
+                <div className="flex flex-col space-y-6 mt-8">
+                  <button 
+                    onClick={() => handleNavClick('#home')}
+                    className="text-lg text-gray-700 hover:text-blue-600 transition-colors text-right py-2"
+                  >
+                    الرئيسية
+                  </button>
+                  <button 
+                    onClick={() => handleNavClick('#features')}
+                    className="text-lg text-gray-700 hover:text-blue-600 transition-colors text-right py-2"
+                  >
+                    الميزات
+                  </button>
+                  <button 
+                    onClick={() => handleNavClick('#about')}
+                    className="text-lg text-gray-700 hover:text-blue-600 transition-colors text-right py-2"
+                  >
+                    من نحن
+                  </button>
+                  <button 
+                    onClick={() => handleNavClick('#pricing')}
+                    className="text-lg text-gray-700 hover:text-blue-600 transition-colors text-right py-2"
+                  >
+                    التسعير
+                  </button>
+                  <button 
+                    onClick={() => handleNavClick('#contact')}
+                    className="text-lg text-gray-700 hover:text-blue-600 transition-colors text-right py-2"
+                  >
+                    اتصل بنا
+                  </button>
+                  <div className="pt-4 border-t">
+                    <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
+                      حمل التطبيق الآن
+                    </Button>
+                  </div>
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
         </nav>
       </header>
@@ -109,11 +186,11 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-center justify-between">
             <div className="lg:w-1/2 mb-12 lg:mb-0 animate-fade-in z-10">
-              <h1 className="text-5xl font-bold mb-6 arabic-title leading-tight">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 arabic-title leading-tight">
                 مرحباً بكم في 
                 <span className="text-gradient-blue"> خدام</span>
               </h1>
-              <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+              <p className="text-lg sm:text-xl text-gray-300 mb-8 leading-relaxed">
                 مع تطبيقنا، يمكنك تسييرك متجرك من المخزون إلى المبيعات
                 باستعمال الهاتف دون الحاجة إلى حاسوب، ونظم عملياتك
                 بكل كفاءة
@@ -136,22 +213,22 @@ const Index = () => {
                   <img 
                     src="/lovable-uploads/48e8cd7b-0f6a-467a-b66b-86c6bcd10007.png" 
                     alt="Khadame App Dashboard"
-                    className="w-64 h-auto rounded-3xl shadow-2xl"
+                    className="w-48 sm:w-64 h-auto rounded-3xl shadow-2xl"
                   />
                 </div>
                 
                 {/* Barcode Scanner Screenshot - Positioned to the right and slightly behind */}
-                <div className="absolute -right-20 top-16 z-10 animate-float-delayed">
+                <div className="absolute -right-16 sm:-right-20 top-16 z-10 animate-float-delayed">
                   <img 
                     src="/lovable-uploads/27bd8bf2-1bea-454d-8218-9b3669141b31.png" 
                     alt="Khadame Barcode Scanner"
-                    className="w-48 h-auto rounded-3xl shadow-xl transform rotate-12"
+                    className="w-36 sm:w-48 h-auto rounded-3xl shadow-xl transform rotate-12"
                   />
                 </div>
                 
                 {/* Background gradient circles */}
-                <div className="absolute w-80 h-80 bg-gradient-blue rounded-full opacity-10 -top-10 -left-10 z-0"></div>
-                <div className="absolute w-96 h-96 bg-blue-600 rounded-full opacity-5 -bottom-10 -right-10 z-0"></div>
+                <div className="absolute w-64 sm:w-80 h-64 sm:h-80 bg-gradient-blue rounded-full opacity-10 -top-10 -left-10 z-0"></div>
+                <div className="absolute w-72 sm:w-96 h-72 sm:h-96 bg-blue-600 rounded-full opacity-5 -bottom-10 -right-10 z-0"></div>
               </div>
             </div>
           </div>
@@ -162,20 +239,20 @@ const Index = () => {
       <section id="features" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4 arabic-title">مميزات التطبيق</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 arabic-title">مميزات التطبيق</h2>
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
               نقدم لك حلولاً متكاملة لإدارة الأعمال والمخزون مع تطبيق سهل الاستخدام
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
               <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:-translate-y-2 group">
-                <CardContent className="p-8 text-center">
+                <CardContent className="p-6 sm:p-8 text-center">
                   <div className="mb-6 flex justify-center group-hover:scale-110 transition-transform duration-300">
                     {feature.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">{feature.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">{feature.title}</h3>
+                  <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{feature.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -187,17 +264,17 @@ const Index = () => {
       <section id="pricing" className="py-20 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4 arabic-title">السعر</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 arabic-title">السعر</h2>
           </div>
           <Card className="bg-gradient-blue text-white relative overflow-hidden max-w-md mx-auto">
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-blue-600"></div>
-            <CardContent className="p-8 text-center">
+            <CardContent className="p-6 sm:p-8 text-center">
               <Badge className="mb-4 bg-white text-blue-600">الأكثر شعبية</Badge>
-              <h3 className="text-2xl font-bold mb-6">الخطة الأساسية</h3>
+              <h3 className="text-xl sm:text-2xl font-bold mb-6">الخطة الأساسية</h3>
               <p className="text-sm mb-6 opacity-90">
                 الخطة الأساسية تشمل إشتراك سنوي كامل مع دعم فني ومحديثات مجانية مدة عام
               </p>
-              <div className="flex justify-center gap-4 mb-6">
+              <div className="flex flex-col sm:flex-row justify-center gap-4 mb-6">
                 <Button variant="outline" className="border-white/20 text-white hover:bg-white/10">
                   مساعدة تجريبي
                 </Button>
@@ -206,7 +283,7 @@ const Index = () => {
                 </Button>
               </div>
               <div className="text-center mb-6">
-                <span className="text-3xl font-bold">دج 2000</span>
+                <span className="text-2xl sm:text-3xl font-bold">دج 2000</span>
                 <span className="text-sm opacity-75"> / العام</span>
               </div>
               <div className="space-y-3 mb-8 text-right">
@@ -235,39 +312,39 @@ const Index = () => {
       <section className="py-16 bg-gradient-blue text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4 arabic-title">كيفية استخدام التطبيق</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold mb-4 arabic-title">كيفية استخدام التطبيق</h2>
           </div>
           <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
             <div className="space-y-8">
               {stats.map((stat, index) => (
                 <div key={index} className="flex items-center">
                   <div className="bg-white/20 rounded-full px-4 py-2 ml-4">
-                    <span className="text-2xl font-bold">{stat.number}</span>
+                    <span className="text-xl sm:text-2xl font-bold">{stat.number}</span>
                   </div>
-                  <span className="text-lg">{stat.label}</span>
+                  <span className="text-base sm:text-lg">{stat.label}</span>
                 </div>
               ))}
             </div>
-            <div className="bg-white/10 rounded-2xl p-8 backdrop-blur-sm">
+            <div className="bg-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-sm">
               <div className="text-center">
-                <div className="bg-white rounded-2xl p-6 mb-4 inline-block">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">مرحبا بك في خدام</h3>
-                  <p className="text-gray-600 text-sm mb-4">الرجاء اختيار العملية</p>
-                  <div className="grid grid-cols-2 gap-3">
-                    <div className="bg-blue-600 text-white rounded-lg p-3 text-center">
-                      <Database className="w-6 h-6 mx-auto mb-1" />
+                <div className="bg-white rounded-2xl p-4 sm:p-6 mb-4 inline-block">
+                  <h3 className="text-lg sm:text-2xl font-bold text-gray-900 mb-2">مرحبا بك في خدام</h3>
+                  <p className="text-gray-600 text-xs sm:text-sm mb-4">الرجاء اختيار العملية</p>
+                  <div className="grid grid-cols-2 gap-2 sm:gap-3">
+                    <div className="bg-blue-600 text-white rounded-lg p-2 sm:p-3 text-center">
+                      <Database className="w-4 sm:w-6 h-4 sm:h-6 mx-auto mb-1" />
                       <span className="text-xs">مخزون</span>
                     </div>
-                    <div className="bg-blue-600 text-white rounded-lg p-3 text-center">
-                      <BarChart3 className="w-6 h-6 mx-auto mb-1" />
+                    <div className="bg-blue-600 text-white rounded-lg p-2 sm:p-3 text-center">
+                      <BarChart3 className="w-4 sm:w-6 h-4 sm:h-6 mx-auto mb-1" />
                       <span className="text-xs">احصائيات</span>
                     </div>
-                    <div className="bg-blue-600 text-white rounded-lg p-3 text-center">
-                      <ShoppingCart className="w-6 h-6 mx-auto mb-1" />
+                    <div className="bg-blue-600 text-white rounded-lg p-2 sm:p-3 text-center">
+                      <ShoppingCart className="w-4 sm:w-6 h-4 sm:h-6 mx-auto mb-1" />
                       <span className="text-xs">بيع</span>
                     </div>
-                    <div className="bg-blue-600 text-white rounded-lg p-3 text-center">
-                      <Settings className="w-6 h-6 mx-auto mb-1" />
+                    <div className="bg-blue-600 text-white rounded-lg p-2 sm:p-3 text-center">
+                      <Settings className="w-4 sm:w-6 h-4 sm:h-6 mx-auto mb-1" />
                       <span className="text-xs">اعدادات</span>
                     </div>
                   </div>
@@ -282,7 +359,7 @@ const Index = () => {
       <section id="about" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4 arabic-title">من نحن</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 arabic-title">من نحن</h2>
           </div>
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <div className="lg:w-1/2">
@@ -296,19 +373,19 @@ const Index = () => {
             </div>
             <div className="lg:w-1/2">
               <div className="text-right">
-                <div className="text-6xl font-bold text-gradient-blue mb-4 arabic-title">خدام</div>
-                <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                <div className="text-4xl sm:text-6xl font-bold text-gradient-blue mb-4 arabic-title">خدام</div>
+                <p className="text-base sm:text-lg text-gray-700 leading-relaxed mb-6">
                   نقدم تطبيقاً متكاملاً لإدارة الأعمال والمخزون، يتيح لك
                   مسح الباركود بسهولة، متابعة المبيعات، وإدارة
                   المخزون بشكل ذكي مع واجهة بسيطة ومقارير
                   فورية. هدفنا هو تغيير الطريقة المتعارف عليها في
                   تسيير المتاجر
                 </p>
-                <div className="flex items-center gap-4">
-                  <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                <div className="flex flex-col sm:flex-row items-center gap-4">
+                  <Button className="bg-blue-600 hover:bg-blue-700 text-white w-full sm:w-auto">
                     حمل التطبيق الآن
                   </Button>
-                  <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
+                  <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50 w-full sm:w-auto">
                     تواصل معنا
                   </Button>
                 </div>
@@ -322,13 +399,13 @@ const Index = () => {
       <section id="contact" className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4 arabic-title">تواصل معنا لإنشاء حساب</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 arabic-title">تواصل معنا لإنشاء حساب</h2>
           </div>
           <div className="flex flex-col lg:flex-row gap-12">
             <div className="lg:w-1/2">
               <div className="space-y-8">
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">
                     تواصل معنا لإنشاء حسابك
                     <br />
                     وابدأ في استخدام التطبيق
@@ -351,15 +428,15 @@ const Index = () => {
                     </div>
                     <div>
                       <h4 className="font-bold text-gray-900">البريد الالكتروني</h4>
-                      <p className="text-gray-600">zianitakiedineofficial@gmail.com</p>
-                      <p className="text-gray-600">youssefaidani6@gmail.com</p>
+                      <p className="text-gray-600 text-sm sm:text-base">zianitakiedineofficial@gmail.com</p>
+                      <p className="text-gray-600 text-sm sm:text-base">youssefaidani6@gmail.com</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             <div className="lg:w-1/2">
-              <Card className="p-8">
+              <Card className="p-6 sm:p-8">
                 <CardContent className="p-0">
                   <div className="mb-6">
                     <p className="text-gray-600 mb-2">الرجاء إدخال معلوماتك الشخصية</p>
@@ -410,9 +487,9 @@ const Index = () => {
       <footer className="bg-gray-900 text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-6 md:mb-0">
-              <div className="text-2xl font-bold text-gradient-blue arabic-title mb-2">خدام</div>
-              <p className="text-gray-400">يقدم حلولاً متطورة لإدارة المخزون والمبيعات لتطوير أعمالك وتحقيق النجاح المستدام</p>
+            <div className="mb-6 md:mb-0 text-center md:text-right">
+              <div className="text-xl sm:text-2xl font-bold text-gradient-blue arabic-title mb-2">خدام</div>
+              <p className="text-gray-400 text-sm sm:text-base">يقدم حلولاً متطورة لإدارة المخزون والمبيعات لتطوير أعمالك وتحقيق النجاح المستدام</p>
             </div>
             <div className="flex space-x-4 space-x-reverse">
               <div className="bg-blue-600 p-3 rounded-full hover:bg-blue-700 transition-colors cursor-pointer">
