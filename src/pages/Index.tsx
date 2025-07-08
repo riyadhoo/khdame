@@ -1,12 +1,418 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Badge } from "@/components/ui/badge";
+import { 
+  Phone, 
+  Mail, 
+  CheckCircle, 
+  BarChart3, 
+  Package, 
+  Users, 
+  Settings, 
+  Smartphone,
+  Facebook,
+  Instagram,
+  ArrowLeft,
+  Star,
+  Truck,
+  HeadphonesIcon,
+  Database,
+  PieChart,
+  QrCode,
+  ShoppingCart
+} from "lucide-react";
+import { toast } from "@/hooks/use-toast";
 
 const Index = () => {
+  const [formData, setFormData] = useState({
+    email: "",
+    fullName: "",
+    phone: "",
+    message: ""
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    toast({
+      title: "تم إرسال الرسالة بنجاح",
+      description: "سنتواصل معك في أقرب وقت ممكن",
+    });
+    setFormData({ email: "", fullName: "", phone: "", message: "" });
+  };
+
+  const features = [
+    {
+      icon: <QrCode className="w-12 h-12 text-teal-600" />,
+      title: "مسح ضوئي فوري",
+      description: "مسح الباركود والتحديثات بصريقة فورية"
+    },
+    {
+      icon: <BarChart3 className="w-12 h-12 text-teal-600" />,
+      title: "تحديث لحظي",
+      description: "متابعة التحديثات في جميع فروعك في الوقت الحقيقي"
+    },
+    {
+      icon: <PieChart className="w-12 h-12 text-teal-600" />,
+      title: "تقارير ذكية",
+      description: "تحليلات مفصلة لمساعدتك في اتخاذ القرارات"
+    },
+    {
+      icon: <Smartphone className="w-12 h-12 text-teal-600" />,
+      title: "واجهة بسيطة",
+      description: "تصميم مبدئي لا يحتاج إلى تدريب مسبق"
+    },
+    {
+      icon: <Users className="w-12 h-12 text-teal-600" />,
+      title: "دعم متكامل",
+      description: "فريق دعم في جميع مراحل الاستخدام"
+    },
+    {
+      icon: <Settings className="w-12 h-12 text-teal-600" />,
+      title: "نظام الفواتير الذكية",
+      description: "حساب تلقائي لكلفة المنتوج والضرائب مع هامش الربح"
+    }
+  ];
+
+  const stats = [
+    { number: "3625", label: "عدد زيارات التطبيق" },
+    { number: "578", label: "عدد تحميلات التطبيق" }
+  ];
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <header className="bg-white shadow-sm sticky top-0 z-50">
+        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <div className="flex items-center space-x-4 space-x-reverse">
+              <div className="text-2xl font-bold text-gradient-teal arabic-title">خدام</div>
+            </div>
+            <div className="hidden md:flex items-center space-x-8 space-x-reverse">
+              <a href="#home" className="text-gray-700 hover:text-teal-600 transition-colors">الرئيسية</a>
+              <a href="#features" className="text-gray-700 hover:text-teal-600 transition-colors">الميزات</a>
+              <a href="#about" className="text-gray-700 hover:text-teal-600 transition-colors">من نحن</a>
+              <a href="#pricing" className="text-gray-700 hover:text-teal-600 transition-colors">التسعير</a>
+              <a href="#contact" className="text-gray-700 hover:text-teal-600 transition-colors">اتصل بنا</a>
+            </div>
+            <Button className="bg-teal-600 hover:bg-teal-700 text-white">
+              حمل التطبيق الآن
+            </Button>
+          </div>
+        </nav>
+      </header>
+
+      {/* Hero Section */}
+      <section id="home" className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row items-center justify-between">
+            <div className="lg:w-1/2 mb-12 lg:mb-0 animate-fade-in">
+              <h1 className="text-5xl font-bold mb-6 arabic-title leading-tight">
+                مرحباً بكم في 
+                <span className="text-gradient-teal"> خدام</span>
+              </h1>
+              <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+                مع تطبيقنا، يمكنك تسييرك متجرك من المخزون إلى المبيعات
+                باستعمال الهاتف دون الحاجة إلى حاسوب، ونظم عملياتك
+                بكل كفاءة
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-4 text-lg">
+                  <ArrowLeft className="ml-2 h-5 w-5" />
+                  حمل التطبيق الآن
+                </Button>
+                <Button size="lg" variant="outline" className="border-teal-600 text-teal-600 hover:bg-teal-50 px-8 py-4 text-lg">
+                  تواصل معنا
+                </Button>
+              </div>
+            </div>
+            <div className="lg:w-1/2 flex justify-center animate-float">
+              <div className="relative">
+                <div className="w-80 h-80 bg-gradient-teal rounded-full opacity-20 absolute -top-10 -left-10"></div>
+                <div className="w-96 h-96 bg-teal-600 rounded-3xl flex items-center justify-center shadow-2xl">
+                  <Smartphone className="w-32 h-32 text-white" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section id="features" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4 arabic-title">مميزات التطبيق</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              نقدم لك حلولاً متكاملة لإدارة الأعمال والمخزون مع تطبيق سهل الاستخدام
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {features.map((feature, index) => (
+              <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:-translate-y-2 group">
+                <CardContent className="p-8 text-center">
+                  <div className="mb-6 flex justify-center group-hover:scale-110 transition-transform duration-300">
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">{feature.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section id="pricing" className="py-20 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4 arabic-title">السعر</h2>
+          </div>
+          <Card className="bg-gradient-teal text-white relative overflow-hidden max-w-md mx-auto">
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-teal-400 to-teal-600"></div>
+            <CardContent className="p-8 text-center">
+              <Badge className="mb-4 bg-white text-teal-600">الأكثر شعبية</Badge>
+              <h3 className="text-2xl font-bold mb-6">الخطة الأساسية</h3>
+              <p className="text-sm mb-6 opacity-90">
+                الخطة الأساسية تشمل إشتراك سنوي كامل مع دعم فني ومحديثات مجانية مدة عام
+              </p>
+              <div className="flex justify-center gap-4 mb-6">
+                <Button variant="outline" className="border-white/20 text-white hover:bg-white/10">
+                  مساعدة تجريبي
+                </Button>
+                <Button variant="outline" className="border-white/20 text-white hover:bg-white/10">
+                  دعم تقني
+                </Button>
+              </div>
+              <div className="text-center mb-6">
+                <span className="text-3xl font-bold">دج 2000</span>
+                <span className="text-sm opacity-75"> / العام</span>
+              </div>
+              <div className="space-y-3 mb-8 text-right">
+                <div className="flex items-center">
+                  <CheckCircle className="w-5 h-5 text-green-300 ml-3" />
+                  <span>دعم تقني</span>
+                </div>
+                <div className="flex items-center">
+                  <CheckCircle className="w-5 h-5 text-green-300 ml-3" />
+                  <span>تحديثات مجانية</span>
+                </div>
+                <div className="flex items-center">
+                  <CheckCircle className="w-5 h-5 text-green-300 ml-3" />
+                  <span>مساعدة تجريبية</span>
+                </div>
+              </div>
+              <Button className="w-full bg-white text-teal-600 hover:bg-gray-100 text-lg py-3">
+                تواصل معنا الآن
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-16 bg-gradient-teal text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4 arabic-title">كيفية استخدام التطبيق</h2>
+          </div>
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+            <div className="space-y-8">
+              {stats.map((stat, index) => (
+                <div key={index} className="flex items-center">
+                  <div className="bg-white/20 rounded-full px-4 py-2 ml-4">
+                    <span className="text-2xl font-bold">{stat.number}</span>
+                  </div>
+                  <span className="text-lg">{stat.label}</span>
+                </div>
+              ))}
+            </div>
+            <div className="bg-white/10 rounded-2xl p-8 backdrop-blur-sm">
+              <div className="text-center">
+                <div className="bg-white rounded-2xl p-6 mb-4 inline-block">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">مرحبا بك في خدام</h3>
+                  <p className="text-gray-600 text-sm mb-4">الرجاء اختيار العملية</p>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="bg-teal-600 text-white rounded-lg p-3 text-center">
+                      <Database className="w-6 h-6 mx-auto mb-1" />
+                      <span className="text-xs">مخزون</span>
+                    </div>
+                    <div className="bg-teal-600 text-white rounded-lg p-3 text-center">
+                      <BarChart3 className="w-6 h-6 mx-auto mb-1" />
+                      <span className="text-xs">احصائيات</span>
+                    </div>
+                    <div className="bg-teal-600 text-white rounded-lg p-3 text-center">
+                      <ShoppingCart className="w-6 h-6 mx-auto mb-1" />
+                      <span className="text-xs">بيع</span>
+                    </div>
+                    <div className="bg-teal-600 text-white rounded-lg p-3 text-center">
+                      <Settings className="w-6 h-6 mx-auto mb-1" />
+                      <span className="text-xs">اعدادات</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4 arabic-title">من نحن</h2>
+          </div>
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+            <div className="lg:w-1/2">
+              <div className="bg-gradient-to-br from-teal-50 to-teal-100 rounded-3xl p-12 flex items-center justify-center">
+                <div className="relative">
+                  <Truck className="w-32 h-32 text-teal-600 animate-float" />
+                  <div className="absolute -top-4 -right-4 w-8 h-8 bg-teal-600 rounded-full flex items-center justify-center">
+                    <Package className="w-4 h-4 text-white" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="lg:w-1/2">
+              <div className="text-right">
+                <div className="text-6xl font-bold text-gradient-teal mb-4 arabic-title">خدام</div>
+                <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                  نقدم تطبيقاً متكاملاً لإدارة الأعمال والمخزون، يتيح لك
+                  مسح الباركود بسهولة، متابعة المبيعات، وإدارة
+                  المخزون بشكل ذكي مع واجهة بسيطة ومقارير
+                  فورية. هدفنا هو تغيير الطريقة المتعارف عليها في
+                  تسيير المتاجر
+                </p>
+                <div className="flex items-center gap-4">
+                  <Button className="bg-teal-600 hover:bg-teal-700 text-white">
+                    حمل التطبيق الآن
+                  </Button>
+                  <Button variant="outline" className="border-teal-600 text-teal-600 hover:bg-teal-50">
+                    تواصل معنا
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4 arabic-title">تواصل معنا لإنشاء حساب</h2>
+          </div>
+          <div className="flex flex-col lg:flex-row gap-12">
+            <div className="lg:w-1/2">
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                    تواصل معنا لإنشاء حسابك
+                    <br />
+                    وابدأ في استخدام التطبيق
+                  </h3>
+                </div>
+                <div className="space-y-6">
+                  <div className="flex items-center gap-4">
+                    <div className="bg-green-500 p-3 rounded-full">
+                      <Phone className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-gray-900">الهاتف</h4>
+                      <p className="text-gray-600">0541593067</p>
+                      <p className="text-gray-600">0540849366</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="bg-blue-500 p-3 rounded-full">
+                      <Mail className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-gray-900">البريد الالكتروني</h4>
+                      <p className="text-gray-600">zianitakiedineofficial@gmail.com</p>
+                      <p className="text-gray-600">youssefaidani6@gmail.com</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="lg:w-1/2">
+              <Card className="p-8">
+                <CardContent className="p-0">
+                  <div className="mb-6">
+                    <p className="text-gray-600 mb-2">الرجاء إدخال معلوماتك الشخصية</p>
+                    <p className="text-gray-600">وسنقوم بالتواصل معك في أقرب وقت</p>
+                  </div>
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <Input
+                      placeholder="أدخل بريدك الالكتروني"
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({...formData, email: e.target.value})}
+                      className="text-right"
+                      required
+                    />
+                    <Input
+                      placeholder="أدخل اسمك الكامل"
+                      value={formData.fullName}
+                      onChange={(e) => setFormData({...formData, fullName: e.target.value})}
+                      className="text-right"
+                      required
+                    />
+                    <Input
+                      placeholder="أدخل رقم هاتفك"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                      className="text-right"
+                      required
+                    />
+                    <Textarea
+                      placeholder="اكتب رسالتك هنا"
+                      value={formData.message}
+                      onChange={(e) => setFormData({...formData, message: e.target.value})}
+                      className="text-right min-h-[120px]"
+                      required
+                    />
+                    <Button type="submit" className="w-full bg-teal-600 hover:bg-teal-700 text-white py-3 text-lg">
+                      إرسال
+                    </Button>
+                  </form>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="mb-6 md:mb-0">
+              <div className="text-2xl font-bold text-gradient-teal arabic-title mb-2">خدام</div>
+              <p className="text-gray-400">يقدم حلولاً متطورة لإدارة المخزون والمبيعات لتطوير أعمالك وتحقيق النجاح المستدام</p>
+            </div>
+            <div className="flex space-x-4 space-x-reverse">
+              <div className="bg-blue-600 p-3 rounded-full hover:bg-blue-700 transition-colors cursor-pointer">
+                <Facebook className="w-5 h-5" />
+              </div>
+              <div className="bg-pink-600 p-3 rounded-full hover:bg-pink-700 transition-colors cursor-pointer">
+                <Instagram className="w-5 h-5" />
+              </div>
+            </div>
+          </div>
+          <div className="border-t border-gray-800 mt-8 pt-8 text-center">
+            <p className="text-gray-400">© 2025 جميع الحقوق محفوظة</p>
+            <p className="text-gray-400 text-sm mt-2">سياسة الخصوصية • شروط الخدمة</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
