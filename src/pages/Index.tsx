@@ -75,7 +75,7 @@ const Index = () => {
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-4 space-x-reverse">
-              <img src="/lovable-uploads/2b6c1a2c-9515-48ad-93d3-eb1712d0d847.png" alt="خدام" className="h-12 w-auto" />
+              <img src="/lovable-uploads/2b6c1a2c-9515-48ad-93d3-eb1712d0d847.png" alt="خدام" className="h-14 w-auto" />
             </div>
             
             {/* Desktop Navigation */}
