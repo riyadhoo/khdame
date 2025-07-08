@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -287,13 +286,12 @@ const Index = () => {
           </div>
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <div className="lg:w-1/2">
-              <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-3xl p-12 flex items-center justify-center">
-                <div className="relative">
-                  <Truck className="w-32 h-32 text-blue-600 animate-float" />
-                  <div className="absolute -top-4 -right-4 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
-                    <Package className="w-4 h-4 text-white" />
-                  </div>
-                </div>
+              <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-3xl p-8 flex items-center justify-center">
+                <img 
+                  src="/lovable-uploads/8dc102ff-3709-49f9-9be1-793315dd737c.png" 
+                  alt="فريق خدام"
+                  className="w-full max-w-md h-auto animate-float"
+                />
               </div>
             </div>
             <div className="lg:w-1/2">
