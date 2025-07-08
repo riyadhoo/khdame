@@ -46,32 +46,32 @@ const Index = () => {
 
   const features = [
     {
-      icon: <QrCode className="w-12 h-12 text-teal-600" />,
+      icon: <QrCode className="w-12 h-12 text-blue-600" />,
       title: "مسح ضوئي فوري",
       description: "مسح الباركود والتحديثات بصريقة فورية"
     },
     {
-      icon: <BarChart3 className="w-12 h-12 text-teal-600" />,
+      icon: <BarChart3 className="w-12 h-12 text-blue-600" />,
       title: "تحديث لحظي",
       description: "متابعة التحديثات في جميع فروعك في الوقت الحقيقي"
     },
     {
-      icon: <PieChart className="w-12 h-12 text-teal-600" />,
+      icon: <PieChart className="w-12 h-12 text-blue-600" />,
       title: "تقارير ذكية",
       description: "تحليلات مفصلة لمساعدتك في اتخاذ القرارات"
     },
     {
-      icon: <Smartphone className="w-12 h-12 text-teal-600" />,
+      icon: <Smartphone className="w-12 h-12 text-blue-600" />,
       title: "واجهة بسيطة",
       description: "تصميم مبدئي لا يحتاج إلى تدريب مسبق"
     },
     {
-      icon: <Users className="w-12 h-12 text-teal-600" />,
+      icon: <Users className="w-12 h-12 text-blue-600" />,
       title: "دعم متكامل",
       description: "فريق دعم في جميع مراحل الاستخدام"
     },
     {
-      icon: <Settings className="w-12 h-12 text-teal-600" />,
+      icon: <Settings className="w-12 h-12 text-blue-600" />,
       title: "نظام الفواتير الذكية",
       description: "حساب تلقائي لكلفة المنتوج والضرائب مع هامش الربح"
     }
@@ -89,16 +89,16 @@ const Index = () => {
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-4 space-x-reverse">
-              <div className="text-2xl font-bold text-gradient-teal arabic-title">خدام</div>
+              <div className="text-2xl font-bold text-gradient-blue arabic-title">خدام</div>
             </div>
             <div className="hidden md:flex items-center space-x-8 space-x-reverse">
-              <a href="#home" className="text-gray-700 hover:text-teal-600 transition-colors">الرئيسية</a>
-              <a href="#features" className="text-gray-700 hover:text-teal-600 transition-colors">الميزات</a>
-              <a href="#about" className="text-gray-700 hover:text-teal-600 transition-colors">من نحن</a>
-              <a href="#pricing" className="text-gray-700 hover:text-teal-600 transition-colors">التسعير</a>
-              <a href="#contact" className="text-gray-700 hover:text-teal-600 transition-colors">اتصل بنا</a>
+              <a href="#home" className="text-gray-700 hover:text-blue-600 transition-colors">الرئيسية</a>
+              <a href="#features" className="text-gray-700 hover:text-blue-600 transition-colors">الميزات</a>
+              <a href="#about" className="text-gray-700 hover:text-blue-600 transition-colors">من نحن</a>
+              <a href="#pricing" className="text-gray-700 hover:text-blue-600 transition-colors">التسعير</a>
+              <a href="#contact" className="text-gray-700 hover:text-blue-600 transition-colors">اتصل بنا</a>
             </div>
-            <Button className="bg-teal-600 hover:bg-teal-700 text-white">
+            <Button className="bg-blue-600 hover:bg-blue-700 text-white">
               حمل التطبيق الآن
             </Button>
           </div>
@@ -106,13 +106,13 @@ const Index = () => {
       </header>
 
       {/* Hero Section */}
-      <section id="home" className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-20">
+      <section id="home" className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-20 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-center justify-between">
-            <div className="lg:w-1/2 mb-12 lg:mb-0 animate-fade-in">
+            <div className="lg:w-1/2 mb-12 lg:mb-0 animate-fade-in z-10">
               <h1 className="text-5xl font-bold mb-6 arabic-title leading-tight">
                 مرحباً بكم في 
-                <span className="text-gradient-teal"> خدام</span>
+                <span className="text-gradient-blue"> خدام</span>
               </h1>
               <p className="text-xl text-gray-300 mb-8 leading-relaxed">
                 مع تطبيقنا، يمكنك تسييرك متجرك من المخزون إلى المبيعات
@@ -120,21 +120,39 @@ const Index = () => {
                 بكل كفاءة
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-4 text-lg">
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg">
                   <ArrowLeft className="ml-2 h-5 w-5" />
                   حمل التطبيق الآن
                 </Button>
-                <Button size="lg" variant="outline" className="border-teal-600 text-teal-600 hover:bg-teal-50 px-8 py-4 text-lg">
+                <Button size="lg" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-4 text-lg">
                   تواصل معنا
                 </Button>
               </div>
             </div>
-            <div className="lg:w-1/2 flex justify-center animate-float">
+            <div className="lg:w-1/2 flex justify-center relative">
+              {/* Floating App Screenshots */}
               <div className="relative">
-                <div className="w-80 h-80 bg-gradient-teal rounded-full opacity-20 absolute -top-10 -left-10"></div>
-                <div className="w-96 h-96 bg-teal-600 rounded-3xl flex items-center justify-center shadow-2xl">
-                  <Smartphone className="w-32 h-32 text-white" />
+                {/* Main Dashboard Screenshot */}
+                <div className="relative z-20 animate-float">
+                  <img 
+                    src="/lovable-uploads/48e8cd7b-0f6a-467a-b66b-86c6bcd10007.png" 
+                    alt="Khadame App Dashboard"
+                    className="w-64 h-auto rounded-3xl shadow-2xl"
+                  />
                 </div>
+                
+                {/* Barcode Scanner Screenshot - Positioned to the right and slightly behind */}
+                <div className="absolute -right-20 top-16 z-10 animate-float-delayed">
+                  <img 
+                    src="/lovable-uploads/27bd8bf2-1bea-454d-8218-9b3669141b31.png" 
+                    alt="Khadame Barcode Scanner"
+                    className="w-48 h-auto rounded-3xl shadow-xl transform rotate-12"
+                  />
+                </div>
+                
+                {/* Background gradient circles */}
+                <div className="absolute w-80 h-80 bg-gradient-blue rounded-full opacity-10 -top-10 -left-10 z-0"></div>
+                <div className="absolute w-96 h-96 bg-blue-600 rounded-full opacity-5 -bottom-10 -right-10 z-0"></div>
               </div>
             </div>
           </div>
@@ -172,10 +190,10 @@ const Index = () => {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4 arabic-title">السعر</h2>
           </div>
-          <Card className="bg-gradient-teal text-white relative overflow-hidden max-w-md mx-auto">
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-teal-400 to-teal-600"></div>
+          <Card className="bg-gradient-blue text-white relative overflow-hidden max-w-md mx-auto">
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-blue-600"></div>
             <CardContent className="p-8 text-center">
-              <Badge className="mb-4 bg-white text-teal-600">الأكثر شعبية</Badge>
+              <Badge className="mb-4 bg-white text-blue-600">الأكثر شعبية</Badge>
               <h3 className="text-2xl font-bold mb-6">الخطة الأساسية</h3>
               <p className="text-sm mb-6 opacity-90">
                 الخطة الأساسية تشمل إشتراك سنوي كامل مع دعم فني ومحديثات مجانية مدة عام
@@ -206,7 +224,7 @@ const Index = () => {
                   <span>مساعدة تجريبية</span>
                 </div>
               </div>
-              <Button className="w-full bg-white text-teal-600 hover:bg-gray-100 text-lg py-3">
+              <Button className="w-full bg-white text-blue-600 hover:bg-gray-100 text-lg py-3">
                 تواصل معنا الآن
               </Button>
             </CardContent>
@@ -215,7 +233,7 @@ const Index = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-gradient-teal text-white">
+      <section className="py-16 bg-gradient-blue text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4 arabic-title">كيفية استخدام التطبيق</h2>
@@ -237,19 +255,19 @@ const Index = () => {
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">مرحبا بك في خدام</h3>
                   <p className="text-gray-600 text-sm mb-4">الرجاء اختيار العملية</p>
                   <div className="grid grid-cols-2 gap-3">
-                    <div className="bg-teal-600 text-white rounded-lg p-3 text-center">
+                    <div className="bg-blue-600 text-white rounded-lg p-3 text-center">
                       <Database className="w-6 h-6 mx-auto mb-1" />
                       <span className="text-xs">مخزون</span>
                     </div>
-                    <div className="bg-teal-600 text-white rounded-lg p-3 text-center">
+                    <div className="bg-blue-600 text-white rounded-lg p-3 text-center">
                       <BarChart3 className="w-6 h-6 mx-auto mb-1" />
                       <span className="text-xs">احصائيات</span>
                     </div>
-                    <div className="bg-teal-600 text-white rounded-lg p-3 text-center">
+                    <div className="bg-blue-600 text-white rounded-lg p-3 text-center">
                       <ShoppingCart className="w-6 h-6 mx-auto mb-1" />
                       <span className="text-xs">بيع</span>
                     </div>
-                    <div className="bg-teal-600 text-white rounded-lg p-3 text-center">
+                    <div className="bg-blue-600 text-white rounded-lg p-3 text-center">
                       <Settings className="w-6 h-6 mx-auto mb-1" />
                       <span className="text-xs">اعدادات</span>
                     </div>
@@ -269,10 +287,10 @@ const Index = () => {
           </div>
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <div className="lg:w-1/2">
-              <div className="bg-gradient-to-br from-teal-50 to-teal-100 rounded-3xl p-12 flex items-center justify-center">
+              <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-3xl p-12 flex items-center justify-center">
                 <div className="relative">
-                  <Truck className="w-32 h-32 text-teal-600 animate-float" />
-                  <div className="absolute -top-4 -right-4 w-8 h-8 bg-teal-600 rounded-full flex items-center justify-center">
+                  <Truck className="w-32 h-32 text-blue-600 animate-float" />
+                  <div className="absolute -top-4 -right-4 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
                     <Package className="w-4 h-4 text-white" />
                   </div>
                 </div>
@@ -280,7 +298,7 @@ const Index = () => {
             </div>
             <div className="lg:w-1/2">
               <div className="text-right">
-                <div className="text-6xl font-bold text-gradient-teal mb-4 arabic-title">خدام</div>
+                <div className="text-6xl font-bold text-gradient-blue mb-4 arabic-title">خدام</div>
                 <p className="text-lg text-gray-700 leading-relaxed mb-6">
                   نقدم تطبيقاً متكاملاً لإدارة الأعمال والمخزون، يتيح لك
                   مسح الباركود بسهولة، متابعة المبيعات، وإدارة
@@ -289,10 +307,10 @@ const Index = () => {
                   تسيير المتاجر
                 </p>
                 <div className="flex items-center gap-4">
-                  <Button className="bg-teal-600 hover:bg-teal-700 text-white">
+                  <Button className="bg-blue-600 hover:bg-blue-700 text-white">
                     حمل التطبيق الآن
                   </Button>
-                  <Button variant="outline" className="border-teal-600 text-teal-600 hover:bg-teal-50">
+                  <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
                     تواصل معنا
                   </Button>
                 </div>
@@ -379,7 +397,7 @@ const Index = () => {
                       className="text-right min-h-[120px]"
                       required
                     />
-                    <Button type="submit" className="w-full bg-teal-600 hover:bg-teal-700 text-white py-3 text-lg">
+                    <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 text-lg">
                       إرسال
                     </Button>
                   </form>
@@ -395,7 +413,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-6 md:mb-0">
-              <div className="text-2xl font-bold text-gradient-teal arabic-title mb-2">خدام</div>
+              <div className="text-2xl font-bold text-gradient-blue arabic-title mb-2">خدام</div>
               <p className="text-gray-400">يقدم حلولاً متطورة لإدارة المخزون والمبيعات لتطوير أعمالك وتحقيق النجاح المستدام</p>
             </div>
             <div className="flex space-x-4 space-x-reverse">
