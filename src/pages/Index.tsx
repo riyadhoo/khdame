@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -44,6 +43,10 @@ const Index = () => {
         behavior: 'smooth'
       });
     }
+  };
+
+  const handleDownload = () => {
+    window.open('http://khdame.com/download', '_blank');
   };
 
   const features = [{
@@ -104,7 +107,7 @@ const Index = () => {
             <div className="hidden md:flex items-center space-x-2 space-x-reverse">
               <ThemeToggle />
               <LanguageSelector />
-              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
+              <Button onClick={handleDownload} className="bg-primary hover:bg-primary/90 text-primary-foreground">
                 {t('nav.download')}
               </Button>
             </div>
@@ -142,7 +145,7 @@ const Index = () => {
                       {t('nav.contact')}
                     </button>
                     <div className="pt-4 border-t">
-                      <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
+                      <Button onClick={handleDownload} className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
                         {t('nav.download')}
                       </Button>
                     </div>
@@ -165,7 +168,7 @@ const Index = () => {
               </h1>
               <p className="text-lg sm:text-xl text-muted-foreground mb-8 leading-relaxed">{t('hero.description')}</p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 text-lg">
+                <Button onClick={handleDownload} size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 text-lg">
                   {!isRTL && <ArrowLeft className="mr-2 h-5 w-5" />}
                   {t('hero.downloadBtn')}
                   {isRTL && <ArrowLeft className="ml-2 h-5 w-5 rotate-180" />}
@@ -332,7 +335,7 @@ const Index = () => {
                   {t('about.description')}
                 </p>
                 <div className="flex flex-col sm:flex-row items-center gap-4">
-                  <Button className="bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto">
+                  <Button onClick={handleDownload} className="bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto">
                     {t('hero.downloadBtn')}
                   </Button>
                   <Button variant="outline" className="border-primary text-primary hover:bg-primary/10 w-full sm:w-auto">
