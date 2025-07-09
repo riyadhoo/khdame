@@ -1,39 +1,17 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
-import { Phone, Mail, CheckCircle, BarChart3, Package, Users, Settings, Smartphone, Facebook, Instagram, ArrowLeft, Star, Truck, HeadphonesIcon, Database, PieChart, QrCode, ShoppingCart, Menu, X } from "lucide-react";
-import { toast } from "@/hooks/use-toast";
+import { CheckCircle, BarChart3, Users, Settings, Smartphone, Facebook, Instagram, ArrowLeft, Database, PieChart, QrCode, ShoppingCart, Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   const { t, language } = useLanguage();
-  const [formData, setFormData] = useState({
-    email: "",
-    fullName: "",
-    phone: "",
-    message: ""
-  });
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast({
-      title: t('toast.success.title'),
-      description: t('toast.success.description')
-    });
-    setFormData({
-      email: "",
-      fullName: "",
-      phone: "",
-      message: ""
-    });
-  };
 
   const handleNavClick = (href: string) => {
     setMobileMenuOpen(false);
@@ -91,16 +69,18 @@ const Index = () => {
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-4 space-x-reverse">
-              <img src="/lovable-uploads/2b6c1a2c-9515-48ad-93d3-eb1712d0d847.png" alt={t('hero.appName')} className="h-14 w-auto" />
+              <Link to="/">
+                <img src="/lovable-uploads/2b6c1a2c-9515-48ad-93d3-eb1712d0d847.png" alt={t('hero.appName')} className="h-14 w-auto" />
+              </Link>
             </div>
             
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8 space-x-reverse">
-              <a href="#home" className="text-muted-foreground hover:text-primary transition-colors">{t('nav.home')}</a>
+              <Link to="/" className="text-primary font-medium">{t('nav.home')}</Link>
               <a href="#features" className="text-muted-foreground hover:text-primary transition-colors">{t('nav.features')}</a>
-              <a href="#about" className="text-muted-foreground hover:text-primary transition-colors">{t('nav.about')}</a>
+              <Link to="/about" className="text-muted-foreground hover:text-primary transition-colors">{t('nav.about')}</Link>
               <a href="#pricing" className="text-muted-foreground hover:text-primary transition-colors">{t('nav.pricing')}</a>
-              <a href="#contact" className="text-muted-foreground hover:text-primary transition-colors">{t('nav.contact')}</a>
+              <Link to="/contact" className="text-muted-foreground hover:text-primary transition-colors">{t('nav.contact')}</Link>
             </div>
             
             {/* Desktop Controls */}
@@ -129,21 +109,21 @@ const Index = () => {
                     </SheetTitle>
                   </SheetHeader>
                   <div className="flex flex-col space-y-6 mt-8">
-                    <button onClick={() => handleNavClick('#home')} className={`text-lg text-muted-foreground hover:text-primary transition-colors py-2 ${isRTL ? 'text-right' : 'text-left'}`}>
+                    <Link to="/" onClick={() => setMobileMenuOpen(false)} className={`text-lg text-primary font-medium transition-colors py-2 ${isRTL ? 'text-right' : 'text-left'}`}>
                       {t('nav.home')}
-                    </button>
+                    </Link>
                     <button onClick={() => handleNavClick('#features')} className={`text-lg text-muted-foreground hover:text-primary transition-colors py-2 ${isRTL ? 'text-right' : 'text-left'}`}>
                       {t('nav.features')}
                     </button>
-                    <button onClick={() => handleNavClick('#about')} className={`text-lg text-muted-foreground hover:text-primary transition-colors py-2 ${isRTL ? 'text-right' : 'text-left'}`}>
+                    <Link to="/about" onClick={() => setMobileMenuOpen(false)} className={`text-lg text-muted-foreground hover:text-primary transition-colors py-2 ${isRTL ? 'text-right' : 'text-left'}`}>
                       {t('nav.about')}
-                    </button>
+                    </Link>
                     <button onClick={() => handleNavClick('#pricing')} className={`text-lg text-muted-foreground hover:text-primary transition-colors py-2 ${isRTL ? 'text-right' : 'text-left'}`}>
                       {t('nav.pricing')}
                     </button>
-                    <button onClick={() => handleNavClick('#contact')} className={`text-lg text-muted-foreground hover:text-primary transition-colors py-2 ${isRTL ? 'text-right' : 'text-left'}`}>
+                    <Link to="/contact" onClick={() => setMobileMenuOpen(false)} className={`text-lg text-muted-foreground hover:text-primary transition-colors py-2 ${isRTL ? 'text-right' : 'text-left'}`}>
                       {t('nav.contact')}
-                    </button>
+                    </Link>
                     <div className="pt-4 border-t">
                       <Button onClick={handleDownload} className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
                         {t('nav.download')}
@@ -311,124 +291,6 @@ const Index = () => {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="py-20 bg-card">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 arabic-title">{t('about.title')}</h2>
-          </div>
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            <div className="lg:w-1/2">
-              <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950 dark:to-blue-900 rounded-3xl p-8 flex items-center justify-center">
-                <img src="/lovable-uploads/8dc102ff-3709-49f9-9be1-793315dd737c.png" alt={t('about.title')} className="w-full max-w-md h-auto animate-float" />
-              </div>
-            </div>
-            <div className="lg:w-1/2">
-              <div className={isRTL ? "text-right" : "text-left"}>
-                <div className="text-4xl sm:text-6xl font-bold text-gradient-blue mb-4 arabic-title">{t('hero.appName')}</div>
-                <p className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-6">
-                  {t('about.description')}
-                </p>
-                <div className="flex flex-col sm:flex-row items-center gap-4">
-                  <Button onClick={handleDownload} className="bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto">
-                    {t('hero.downloadBtn')}
-                  </Button>
-                  <Button variant="outline" className="border-primary text-primary hover:bg-primary/10 w-full sm:w-auto">
-                    {t('hero.contactBtn')}
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="py-20 bg-muted/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 arabic-title">{t('contact.title')}</h2>
-          </div>
-          <div className="flex flex-col lg:flex-row gap-12">
-            <div className="lg:w-1/2">
-              <div className="space-y-8">
-                <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-6">
-                    {t('contact.subtitle')}
-                  </h3>
-                </div>
-                <div className="space-y-6">
-                  <div className="flex items-center gap-4">
-                    <div className="bg-green-500 p-3 rounded-full">
-                      <Phone className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-foreground">{t('contact.phone')}</h4>
-                      <p className="text-muted-foreground">0541593067</p>
-                      <p className="text-muted-foreground">0540849366</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <div className="bg-blue-500 p-3 rounded-full">
-                      <Mail className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-foreground">{t('contact.email')}</h4>
-                      <p className="text-muted-foreground text-sm sm:text-base">zianitakiedineofficial@gmail.com</p>
-                      <p className="text-muted-foreground text-sm sm:text-base">youssefaidani6@gmail.com</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="lg:w-1/2">
-              <Card className="p-6 sm:p-8 bg-card">
-                <CardContent className="p-0">
-                  <div className="mb-6">
-                    <p className="text-muted-foreground mb-2">{t('contact.formTitle')}</p>
-                    <p className="text-muted-foreground">{t('contact.formSubtitle')}</p>
-                  </div>
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <Input 
-                      placeholder={t('contact.emailPlaceholder')} 
-                      type="email" 
-                      value={formData.email} 
-                      onChange={e => setFormData({...formData, email: e.target.value})} 
-                      className={isRTL ? "text-right" : "text-left"} 
-                      required 
-                    />
-                    <Input 
-                      placeholder={t('contact.namePlaceholder')} 
-                      value={formData.fullName} 
-                      onChange={e => setFormData({...formData, fullName: e.target.value})} 
-                      className={isRTL ? "text-right" : "text-left"} 
-                      required 
-                    />
-                    <Input 
-                      placeholder={t('contact.phonePlaceholder')} 
-                      value={formData.phone} 
-                      onChange={e => setFormData({...formData, phone: e.target.value})} 
-                      className={isRTL ? "text-right" : "text-left"} 
-                      required 
-                    />
-                    <Textarea 
-                      placeholder={t('contact.messagePlaceholder')} 
-                      value={formData.message} 
-                      onChange={e => setFormData({...formData, message: e.target.value})} 
-                      className={`${isRTL ? "text-right" : "text-left"} min-h-[120px]`} 
-                      required 
-                    />
-                    <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 text-lg">
-                      {t('contact.sendBtn')}
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
             </div>
           </div>
         </div>
