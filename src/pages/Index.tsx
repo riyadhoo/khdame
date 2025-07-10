@@ -8,11 +8,12 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Link } from "react-router-dom";
-
 const Index = () => {
-  const { t, language } = useLanguage();
+  const {
+    t,
+    language
+  } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   const handleNavClick = (href: string) => {
     setMobileMenuOpen(false);
     const element = document.querySelector(href);
@@ -22,7 +23,6 @@ const Index = () => {
       });
     }
   };
-
   const handleDownload = () => {
     console.log('Download button clicked');
     try {
@@ -33,7 +33,6 @@ const Index = () => {
       window.location.href = 'http://khdame.com/download';
     }
   };
-
   const features = [{
     icon: <QrCode className="w-12 h-12 text-blue-600" />,
     title: t('features.barcode.title'),
@@ -59,7 +58,6 @@ const Index = () => {
     title: t('features.billing.title'),
     description: t('features.billing.desc')
   }];
-
   const stats = [{
     number: "3625",
     label: t('stats.visits')
@@ -67,9 +65,7 @@ const Index = () => {
     number: "578",
     label: t('stats.downloads')
   }];
-
   const isRTL = language === 'ar';
-
   return <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
       <header className="bg-card shadow-sm sticky top-0 z-50 border-b">
@@ -225,10 +221,10 @@ const Index = () => {
                 {t('pricing.description')}
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4 mb-6">
-                <Button variant="outline" className="border-white/20 text-white hover:bg-white/10">
+                <Button variant="outline" className="border-white/20 bg-slate-50 text-slate-900">
                   {t('pricing.trial')}
                 </Button>
-                <Button variant="outline" className="border-white/20 text-white hover:bg-white/10">
+                <Button variant="outline" className="border-white/20 bg-slate-50 text-zinc-950">
                   {t('pricing.support')}
                 </Button>
               </div>
@@ -328,5 +324,4 @@ const Index = () => {
       </footer>
     </div>;
 };
-
 export default Index;
