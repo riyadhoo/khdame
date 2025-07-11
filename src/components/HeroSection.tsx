@@ -10,22 +10,22 @@ export const HeroSection = () => {
   const isRTL = language === 'ar';
 
   return (
-    <section id="home" className="bg-gradient-to-br from-muted via-background to-muted text-foreground py-20 relative overflow-hidden">
+    <section id="home" className="bg-gradient-to-br from-blue-600 via-blue-500 to-blue-700 text-white py-20 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center justify-between">
           <div className="lg:w-1/2 mb-12 lg:mb-0 animate-fade-in z-10">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 arabic-title leading-tight">
               {t('hero.welcome')} 
-              <span className="text-gradient-blue"> {t('hero.appName')}</span>
+              <span className="text-blue-100"> {t('hero.appName')}</span>
             </h1>
-            <p className="text-lg sm:text-xl text-muted-foreground mb-8 leading-relaxed">{t('hero.description')}</p>
+            <p className="text-lg sm:text-xl text-blue-100 mb-8 leading-relaxed">{t('hero.description')}</p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button onClick={handleDownload} size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 text-lg">
+              <Button onClick={handleDownload} size="lg" className="bg-white hover:bg-blue-50 text-blue-600 px-8 py-4 text-lg">
                 {!isRTL && <ArrowLeft className="mr-2 h-5 w-5" />}
                 {t('hero.downloadBtn')}
                 {isRTL && <ArrowLeft className="ml-2 h-5 w-5 rotate-180" />}
               </Button>
-              <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10 px-8 py-4 text-lg">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8 py-4 text-lg">
                 {t('hero.contactBtn')}
               </Button>
             </div>
@@ -44,8 +44,8 @@ export const HeroSection = () => {
               </div>
               
               {/* Background gradient circles */}
-              <div className="absolute w-64 sm:w-80 h-64 sm:h-80 bg-gradient-blue rounded-full opacity-10 -top-10 -left-10 z-0"></div>
-              <div className="absolute w-72 sm:w-96 h-72 sm:h-96 bg-blue-600 rounded-full opacity-5 -bottom-10 -right-10 z-0"></div>
+              <div className="absolute w-64 sm:w-80 h-64 sm:h-80 bg-blue-400 rounded-full opacity-20 -top-10 -left-10 z-0"></div>
+              <div className="absolute w-72 sm:w-96 h-72 sm:h-96 bg-blue-300 rounded-full opacity-10 -bottom-10 -right-10 z-0"></div>
             </div>
           </div>
         </div>
