@@ -1,16 +1,17 @@
-
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useDownload } from "@/hooks/useDownload";
-
 export const HeroSection = () => {
-  const { t, language } = useLanguage();
-  const { handleDownload } = useDownload();
+  const {
+    t,
+    language
+  } = useLanguage();
+  const {
+    handleDownload
+  } = useDownload();
   const isRTL = language === 'ar';
-
-  return (
-    <section id="home" className="bg-gradient-to-br from-blue-600 via-blue-500 to-blue-700 text-white py-20 relative overflow-hidden">
+  return <section id="home" className="bg-gradient-to-br from-blue-600 via-blue-500 to-blue-700 text-white py-20 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center justify-between">
           <div className="lg:w-1/2 mb-12 lg:mb-0 animate-fade-in z-10">
@@ -25,7 +26,7 @@ export const HeroSection = () => {
                 {t('hero.downloadBtn')}
                 {isRTL && <ArrowLeft className="ml-2 h-5 w-5 rotate-180" />}
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8 py-4 text-lg">
+              <Button size="lg" variant="outline" className="border-white px-8 py-4 text-lg text-slate-50 bg-transparent">
                 {t('hero.contactBtn')}
               </Button>
             </div>
@@ -50,6 +51,5 @@ export const HeroSection = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
