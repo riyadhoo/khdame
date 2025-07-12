@@ -227,9 +227,9 @@ const About = () => {
               </Card>
             </div>
           </div>
-        </div>
+        </section>
       )}
-    </section>
+    </div>
   );
 };
 
