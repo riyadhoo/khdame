@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -10,16 +9,17 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Link } from "react-router-dom";
-
 const Contact = () => {
-  const { t, language } = useLanguage();
+  const {
+    t,
+    language
+  } = useLanguage();
   const [formData, setFormData] = useState({
     email: "",
     fullName: "",
     phone: "",
     message: ""
   });
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
@@ -33,15 +33,11 @@ const Contact = () => {
       message: ""
     });
   };
-
   const handleDownload = () => {
     window.open('http://khdame.com/download', '_blank');
   };
-
   const isRTL = language === 'ar';
-
-  return (
-    <div className="min-h-screen bg-background text-foreground">
+  return <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
       <header className="bg-card shadow-sm sticky top-0 z-50 border-b">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -100,8 +96,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="font-bold text-foreground">{t('contact.email')}</h4>
-                      <p className="text-muted-foreground text-sm sm:text-base">zianitakiedineofficial@gmail.com</p>
-                      <p className="text-muted-foreground text-sm sm:text-base">youssefaidani6@gmail.com</p>
+                      <p className="text-muted-foreground text-sm sm:text-base">khdame.contact@gmail.com</p>
+                      
                     </div>
                   </div>
                 </div>
@@ -115,35 +111,22 @@ const Contact = () => {
                     <p className="text-muted-foreground">{t('contact.formSubtitle')}</p>
                   </div>
                   <form onSubmit={handleSubmit} className="space-y-6">
-                    <Input 
-                      placeholder={t('contact.emailPlaceholder')} 
-                      type="email" 
-                      value={formData.email} 
-                      onChange={e => setFormData({...formData, email: e.target.value})} 
-                      className={isRTL ? "text-right" : "text-left"} 
-                      required 
-                    />
-                    <Input 
-                      placeholder={t('contact.namePlaceholder')} 
-                      value={formData.fullName} 
-                      onChange={e => setFormData({...formData, fullName: e.target.value})} 
-                      className={isRTL ? "text-right" : "text-left"} 
-                      required 
-                    />
-                    <Input 
-                      placeholder={t('contact.phonePlaceholder')} 
-                      value={formData.phone} 
-                      onChange={e => setFormData({...formData, phone: e.target.value})} 
-                      className={isRTL ? "text-right" : "text-left"} 
-                      required 
-                    />
-                    <Textarea 
-                      placeholder={t('contact.messagePlaceholder')} 
-                      value={formData.message} 
-                      onChange={e => setFormData({...formData, message: e.target.value})} 
-                      className={`${isRTL ? "text-right" : "text-left"} min-h-[120px]`} 
-                      required 
-                    />
+                    <Input placeholder={t('contact.emailPlaceholder')} type="email" value={formData.email} onChange={e => setFormData({
+                    ...formData,
+                    email: e.target.value
+                  })} className={isRTL ? "text-right" : "text-left"} required />
+                    <Input placeholder={t('contact.namePlaceholder')} value={formData.fullName} onChange={e => setFormData({
+                    ...formData,
+                    fullName: e.target.value
+                  })} className={isRTL ? "text-right" : "text-left"} required />
+                    <Input placeholder={t('contact.phonePlaceholder')} value={formData.phone} onChange={e => setFormData({
+                    ...formData,
+                    phone: e.target.value
+                  })} className={isRTL ? "text-right" : "text-left"} required />
+                    <Textarea placeholder={t('contact.messagePlaceholder')} value={formData.message} onChange={e => setFormData({
+                    ...formData,
+                    message: e.target.value
+                  })} className={`${isRTL ? "text-right" : "text-left"} min-h-[120px]`} required />
                     <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 text-lg">
                       {t('contact.sendBtn')}
                     </Button>
@@ -154,8 +137,6 @@ const Contact = () => {
           </div>
         </div>
       </section>
-    </div>
-  );
+    </div>;
 };
-
 export default Contact;
