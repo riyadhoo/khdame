@@ -1,4 +1,5 @@
 
+
 import { Facebook, Instagram, Mail } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -29,26 +30,28 @@ export const Footer = () => {
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-4">
               <div 
-                className="bg-blue-600 p-3 rounded-full hover:bg-blue-700 transition-colors cursor-pointer flex items-center gap-2"
+                className="bg-blue-600 p-3 rounded-full hover:bg-blue-700 transition-colors cursor-pointer"
                 onClick={handleFacebookClick}
               >
                 <Facebook className="w-5 h-5 text-white" />
-                <span className="text-white text-sm font-medium">Facebook</span>
               </div>
+              <span className="text-foreground text-sm font-medium">khdame/خدام</span>
               <div 
-                className="bg-pink-600 p-3 rounded-full hover:bg-pink-700 transition-colors cursor-pointer flex items-center gap-2"
+                className="bg-pink-600 p-3 rounded-full hover:bg-pink-700 transition-colors cursor-pointer"
                 onClick={handleInstagramClick}
               >
                 <Instagram className="w-5 h-5 text-white" />
-                <span className="text-white text-sm font-medium">Instagram</span>
               </div>
+              <span className="text-foreground text-sm font-medium">khdame_app</span>
             </div>
-            <div 
-              className="bg-green-600 p-3 rounded-full hover:bg-green-700 transition-colors cursor-pointer flex items-center gap-2 mx-auto"
-              onClick={handleEmailClick}
-            >
-              <Mail className="w-5 h-5 text-white" />
-              <span className="text-white text-sm font-medium">khdame.contact@gmail.com</span>
+            <div className="flex items-center gap-2 mx-auto">
+              <div 
+                className="bg-green-600 p-3 rounded-full hover:bg-green-700 transition-colors cursor-pointer"
+                onClick={handleEmailClick}
+              >
+                <Mail className="w-5 h-5 text-white" />
+              </div>
+              <span className="text-foreground text-sm font-medium">khdame.contact@gmail.com</span>
             </div>
           </div>
         </div>
@@ -60,3 +63,4 @@ export const Footer = () => {
     </footer>
   );
 };
+
