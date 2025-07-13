@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Link } from "react-router-dom";
 
 export const PricingSection = () => {
   const { t, language } = useLanguage();
@@ -49,9 +50,11 @@ export const PricingSection = () => {
                 <span>{t('pricing.feature3')}</span>
               </div>
             </div>
-            <Button className="w-full bg-white text-blue-600 hover:bg-gray-100 text-lg py-3">
-              {t('pricing.contactBtn')}
-            </Button>
+            <Link to="/contact">
+              <Button className="w-full bg-white text-blue-600 hover:bg-gray-100 text-lg py-3">
+                {t('pricing.contactBtn')}
+              </Button>
+            </Link>
           </CardContent>
         </Card>
       </div>

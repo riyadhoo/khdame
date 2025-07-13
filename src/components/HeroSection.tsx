@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useDownload } from "@/hooks/useDownload";
+import { Link } from "react-router-dom";
+
 export const HeroSection = () => {
   const {
     t,
@@ -26,9 +28,11 @@ export const HeroSection = () => {
                 {t('hero.downloadBtn')}
                 {isRTL && <ArrowLeft className="ml-2 h-5 w-5 rotate-180" />}
               </Button>
-              <Button size="lg" variant="outline" className="border-white px-8 py-4 text-lg text-slate-50 bg-transparent">
-                {t('hero.contactBtn')}
-              </Button>
+              <Link to="/contact">
+                <Button size="lg" variant="outline" className="border-white px-8 py-4 text-lg text-slate-50 bg-transparent w-full">
+                  {t('hero.contactBtn')}
+                </Button>
+              </Link>
             </div>
           </div>
           <div className="lg:w-1/2 flex justify-center relative">
