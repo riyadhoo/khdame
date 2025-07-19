@@ -3,7 +3,8 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { ArrowLeft, Store } from "lucide-react";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { ArrowLeft, Store, MapPin, Phone } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 // Extended sample data with store information
@@ -13,28 +14,44 @@ const stores = [
     name: "متجر الأطعمة الممتازة",
     nameEn: "Premium Foods Store",
     description: "متجر متخصص في الأطعمة المعلبة عالية الجودة",
-    descriptionEn: "Specialized store for high-quality canned foods"
+    descriptionEn: "Specialized store for high-quality canned foods",
+    location: "الجزائر العاصمة، الجزائر",
+    locationEn: "Algiers, Algeria", 
+    phone: "+213 21 123 456",
+    avatar: "/lovable-uploads/f5705ca5-1adf-4b7c-a2dd-d2da7d201505.png"
   },
   {
     id: 2,
     name: "متجر الحليب الطازج",
     nameEn: "Fresh Milk Store",
     description: "متجر متخصص في منتجات الألبان الطازجة",
-    descriptionEn: "Specialized store for fresh dairy products"
+    descriptionEn: "Specialized store for fresh dairy products",
+    location: "وهران، الجزائر",
+    locationEn: "Oran, Algeria",
+    phone: "+213 41 234 567",
+    avatar: "/lovable-uploads/323310ee-f642-4338-8f93-ebc78502dc6e.png"
   },
   {
     id: 3,
     name: "متجر العصائر الطبيعية",
     nameEn: "Natural Juice Store",
     description: "متجر متخصص في العصائر الطبيعية والمشروبات الصحية",
-    descriptionEn: "Specialized store for natural juices and healthy beverages"
+    descriptionEn: "Specialized store for natural juices and healthy beverages",
+    location: "قسنطينة، الجزائر",
+    locationEn: "Constantine, Algeria",
+    phone: "+213 31 345 678",
+    avatar: "/lovable-uploads/89cf4604-5de4-40a8-bf4e-f9d7428c70ab.png"
   },
   {
     id: 4,
     name: "متجر الخدمات",
     nameEn: "Services Store",
     description: "متجر متخصص في خدمات التوصيل والشحن",
-    descriptionEn: "Specialized store for delivery and shipping services"
+    descriptionEn: "Specialized store for delivery and shipping services",
+    location: "عنابة، الجزائر",
+    locationEn: "Annaba, Algeria",
+    phone: "+213 38 456 789",
+    avatar: "/lovable-uploads/0bcc85d2-ea23-4617-9c18-a9b7148ed6fb.png"
   }
 ];
 
@@ -118,17 +135,34 @@ const StoreProfile = () => {
           </Link>
         </div>
 
-        {/* Store Header */}
+        {/* Store Profile Header */}
         <div className="text-center mb-8">
-          <div className="flex justify-center mb-4">
-            <Store className="h-16 w-16 text-primary" />
+          <div className="flex justify-center mb-6">
+            <Avatar className="h-24 w-24 border-4 border-primary">
+              <AvatarImage src={store.avatar} alt={isRTL ? store.name : store.nameEn} />
+              <AvatarFallback>
+                <Store className="h-12 w-12" />
+              </AvatarFallback>
+            </Avatar>
           </div>
           <h1 className="text-3xl font-bold arabic-title mb-4">
             {isRTL ? store.name : store.nameEn}
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
             {isRTL ? store.description : store.descriptionEn}
           </p>
+          
+          {/* Store Contact Information */}
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-6 text-muted-foreground">
+            <div className="flex items-center gap-2">
+              <MapPin className="h-5 w-5 text-primary" />
+              <span>{isRTL ? store.location : store.locationEn}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Phone className="h-5 w-5 text-primary" />
+              <span>{store.phone}</span>
+            </div>
+          </div>
         </div>
 
         {/* Store Products */}
