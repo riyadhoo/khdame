@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -6,8 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Search, Filter, ShoppingCart, Plus } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Link } from "react-router-dom";
 
-// Sample marketplace items data
+// Sample marketplace items data with extended information
 const marketplaceItems = [
   {
     id: 1,
@@ -18,7 +18,8 @@ const marketplaceItems = [
     category: "معلبات",
     categoryEn: "Canned Goods",
     store: "متجر الأطعمة الممتازة",
-    storeEn: "Premium Foods Store"
+    storeEn: "Premium Foods Store",
+    storeId: 1
   },
   {
     id: 2,
@@ -29,7 +30,8 @@ const marketplaceItems = [
     category: "منتجات الألبان",
     categoryEn: "Dairy Products",
     store: "متجر الحليب الطازج",
-    storeEn: "Fresh Milk Store"
+    storeEn: "Fresh Milk Store",
+    storeId: 2
   },
   {
     id: 3,
@@ -40,7 +42,8 @@ const marketplaceItems = [
     category: "مشروبات",
     categoryEn: "Beverages",
     store: "متجر العصائر الطبيعية",
-    storeEn: "Natural Juice Store"
+    storeEn: "Natural Juice Store",
+    storeId: 3
   }
 ];
 
@@ -146,25 +149,36 @@ const Marketplace = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           {filteredItems.map((item) => (
             <Card key={item.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="aspect-square bg-gray-100 relative">
-                <img
-                  src={item.image}
-                  alt={isRTL ? item.name : item.nameEn}
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              <Link to={`/product/${item.id}`}>
+                <div className="aspect-square bg-gray-100 relative cursor-pointer">
+                  <img
+                    src={item.image}
+                    alt={isRTL ? item.name : item.nameEn}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform"
+                  />
+                </div>
+              </Link>
               <CardContent className="p-4">
-                <h3 className="font-semibold text-lg mb-2">
-                  {isRTL ? item.name : item.nameEn}
-                </h3>
-                <p className="text-sm text-muted-foreground mb-2">
-                  {isRTL ? item.store : item.storeEn}
-                </p>
+                <Link to={`/product/${item.id}`}>
+                  <h3 className="font-semibold text-lg mb-2 hover:text-primary transition-colors cursor-pointer">
+                    {isRTL ? item.name : item.nameEn}
+                  </h3>
+                </Link>
+                <Link to={`/store/${item.storeId}`}>
+                  <p className="text-sm text-muted-foreground mb-2 hover:text-primary transition-colors cursor-pointer">
+                    {isRTL ? item.store : item.storeEn}
+                  </p>
+                </Link>
                 <p className="text-primary font-bold text-lg">
                   {item.price} {isRTL ? "دج" : "DZD"}
                 </p>
               </CardContent>
-              <CardFooter className="p-4 pt-0">
+              <CardFooter className="p-4 pt-0 space-y-2">
+                <Link to={`/product/${item.id}`} className="w-full">
+                  <Button variant="outline" className="w-full">
+                    {isRTL ? "عرض التفاصيل" : "View Details"}
+                  </Button>
+                </Link>
                 <Button
                   onClick={() => addToCart(item.id)}
                   className="w-full bg-primary hover:bg-primary/90"
