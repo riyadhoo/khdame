@@ -1,4 +1,3 @@
-
 import { useParams, Link } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -29,6 +28,13 @@ const stores = [
     nameEn: "Natural Juice Store",
     description: "متجر متخصص في العصائر الطبيعية والمشروبات الصحية",
     descriptionEn: "Specialized store for natural juices and healthy beverages"
+  },
+  {
+    id: 4,
+    name: "متجر الخدمات",
+    nameEn: "Services Store",
+    description: "متجر متخصص في خدمات التوصيل والشحن",
+    descriptionEn: "Specialized store for delivery and shipping services"
   }
 ];
 
@@ -38,7 +44,7 @@ const storeProducts = [
     name: "صلصة طماطم سينتو",
     nameEn: "Cento Tomato Sauce",
     price: 200,
-    image: "/lovable-uploads/48e8cd7b-0f6a-467a-b66b-86c6bcd10007.png",
+    image: "/lovable-uploads/f5705ca5-1adf-4b7c-a2dd-d2da7d201505.png",
     storeId: 1
   },
   {
@@ -46,7 +52,7 @@ const storeProducts = [
     name: "حليب قليل الدسم",
     nameEn: "Low Fat Milk",
     price: 200,
-    image: "/lovable-uploads/8dc102ff-3709-49f9-9be1-793315dd737c.png",
+    image: "/lovable-uploads/323310ee-f642-4338-8f93-ebc78502dc6e.png",
     storeId: 2
   },
   {
@@ -54,8 +60,16 @@ const storeProducts = [
     name: "عصير ليمون طبيعي",
     nameEn: "Natural Lemon Juice",
     price: 150,
-    image: "/lovable-uploads/27bd8bf2-1bea-454d-8218-9b3669141b31.png",
+    image: "/lovable-uploads/89cf4604-5de4-40a8-bf4e-f9d7428c70ab.png",
     storeId: 3
+  },
+  {
+    id: 4,
+    name: "صندوق توصيل",
+    nameEn: "Delivery Box",
+    price: 50,
+    image: "/lovable-uploads/0bcc85d2-ea23-4617-9c18-a9b7148ed6fb.png",
+    storeId: 4
   }
 ];
 
@@ -124,7 +138,7 @@ const StoreProfile = () => {
           </h2>
           
           {products.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {products.map((product) => (
                 <Card key={product.id} className="overflow-hidden hover:shadow-lg transition-shadow">
                   <div className="aspect-square bg-gray-100 relative">

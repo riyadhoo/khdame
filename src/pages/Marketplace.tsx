@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -14,7 +15,7 @@ const marketplaceItems = [
     name: "صلصة طماطم سينتو",
     nameEn: "Cento Tomato Sauce",
     price: 200,
-    image: "/lovable-uploads/48e8cd7b-0f6a-467a-b66b-86c6bcd10007.png",
+    image: "/lovable-uploads/f5705ca5-1adf-4b7c-a2dd-d2da7d201505.png",
     category: "معلبات",
     categoryEn: "Canned Goods",
     store: "متجر الأطعمة الممتازة",
@@ -26,7 +27,7 @@ const marketplaceItems = [
     name: "حليب قليل الدسم",
     nameEn: "Low Fat Milk",
     price: 200,
-    image: "/lovable-uploads/8dc102ff-3709-49f9-9be1-793315dd737c.png",
+    image: "/lovable-uploads/323310ee-f642-4338-8f93-ebc78502dc6e.png",
     category: "منتجات الألبان",
     categoryEn: "Dairy Products",
     store: "متجر الحليب الطازج",
@@ -38,12 +39,24 @@ const marketplaceItems = [
     name: "عصير ليمون طبيعي",
     nameEn: "Natural Lemon Juice",
     price: 150,
-    image: "/lovable-uploads/27bd8bf2-1bea-454d-8218-9b3669141b31.png",
+    image: "/lovable-uploads/89cf4604-5de4-40a8-bf4e-f9d7428c70ab.png",
     category: "مشروبات",
     categoryEn: "Beverages",
     store: "متجر العصائر الطبيعية",
     storeEn: "Natural Juice Store",
     storeId: 3
+  },
+  {
+    id: 4,
+    name: "صندوق توصيل",
+    nameEn: "Delivery Box",
+    price: 50,
+    image: "/lovable-uploads/0bcc85d2-ea23-4617-9c18-a9b7148ed6fb.png",
+    category: "خدمات",
+    categoryEn: "Services",
+    store: "متجر الخدمات",
+    storeEn: "Services Store",
+    storeId: 4
   }
 ];
 
@@ -58,7 +71,8 @@ const Marketplace = () => {
     { id: "all", name: "الكل", nameEn: "All" },
     { id: "canned", name: "معلبات", nameEn: "Canned Goods" },
     { id: "dairy", name: "منتجات الألبان", nameEn: "Dairy Products" },
-    { id: "beverages", name: "مشروبات", nameEn: "Beverages" }
+    { id: "beverages", name: "مشروبات", nameEn: "Beverages" },
+    { id: "services", name: "خدمات", nameEn: "Services" }
   ];
 
   const filteredItems = marketplaceItems.filter(item => {
@@ -145,8 +159,8 @@ const Marketplace = () => {
           </div>
         </div>
 
-        {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        {/* Products Grid - Updated to 4 columns */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
           {filteredItems.map((item) => (
             <Card key={item.id} className="overflow-hidden hover:shadow-lg transition-shadow">
               <Link to={`/product/${item.id}`}>
