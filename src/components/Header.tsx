@@ -40,6 +40,9 @@ export const Header = () => {
             <Link to="/" className="text-primary font-medium">{t('nav.home')}</Link>
             <a href="#features" className="text-muted-foreground hover:text-primary transition-colors">{t('nav.features')}</a>
             <Link to="/about" className="text-muted-foreground hover:text-primary transition-colors">{t('nav.about')}</Link>
+            <Link to="/marketplace" className="text-muted-foreground hover:text-primary transition-colors">
+              {isRTL ? "السوق" : "Marketplace"}
+            </Link>
             <a href="#pricing" className="text-muted-foreground hover:text-primary transition-colors">{t('nav.pricing')}</a>
             <Link to="/contact" className="text-muted-foreground hover:text-primary transition-colors">{t('nav.contact')}</Link>
           </div>
@@ -78,6 +81,9 @@ export const Header = () => {
                   </button>
                   <Link to="/about" onClick={() => setMobileMenuOpen(false)} className={`text-lg text-muted-foreground hover:text-primary transition-colors py-2 ${isRTL ? 'text-right' : 'text-left'}`}>
                     {t('nav.about')}
+                  </Link>
+                  <Link to="/marketplace" onClick={() => setMobileMenuOpen(false)} className={`text-lg text-muted-foreground hover:text-primary transition-colors py-2 ${isRTL ? 'text-right' : 'text-left'}`}>
+                    {isRTL ? "السوق" : "Marketplace"}
                   </Link>
                   <button onClick={() => handleNavClick('#pricing')} className={`text-lg text-muted-foreground hover:text-primary transition-colors py-2 ${isRTL ? 'text-right' : 'text-left'}`}>
                     {t('nav.pricing')}
