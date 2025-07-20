@@ -103,7 +103,7 @@ const Marketplace = () => {
         <Card className="mb-8">
           <CardContent className="p-6">
             <div className="flex items-center gap-4 mb-4">
-              <Avatar className="h-20 w-20">
+              <Avatar className="h-34 w-34">
                 <AvatarImage src={storeInfo.avatar} alt={isRTL ? storeInfo.name : storeInfo.nameEn} />
                 <AvatarFallback>
                   <Store className="h-8 w-8" />
