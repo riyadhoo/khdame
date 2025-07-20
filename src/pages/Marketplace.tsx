@@ -106,7 +106,7 @@ const Marketplace = () => {
               <Avatar className="h-16 w-16">
                 <AvatarImage src={storeInfo.avatar} alt={isRTL ? storeInfo.name : storeInfo.nameEn} />
                 <AvatarFallback>
-                  <Store className="h-8 w-8" />
+                  <Store className="h-12 w-12" />
                 </AvatarFallback>
               </Avatar>
               <div>
