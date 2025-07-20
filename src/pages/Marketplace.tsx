@@ -4,11 +4,21 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { Search, Filter, ShoppingCart, Plus, Store } from "lucide-react";
+import { Search, Filter, ShoppingCart, Plus, Store, MapPin, Phone } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Link } from "react-router-dom";
 
-// Sample marketplace items data with extended information
+// Store information
+const storeInfo = {
+  name: "متجر الأطعمة الممتازة",
+  nameEn: "Premium Foods Store",
+  location: "الجزائر العاصمة، الجزائر",
+  locationEn: "Algiers, Algeria",
+  phone: "+213 555 123 456",
+  avatar: "/lovable-uploads/f5705ca5-1adf-4b7c-a2dd-d2da7d201505.png"
+};
+
+// Sample marketplace items data
 const marketplaceItems = [
   {
     id: 1,
@@ -17,11 +27,7 @@ const marketplaceItems = [
     price: 200,
     image: "/lovable-uploads/f5705ca5-1adf-4b7c-a2dd-d2da7d201505.png",
     category: "معلبات",
-    categoryEn: "Canned Goods",
-    store: "متجر الأطعمة الممتازة",
-    storeEn: "Premium Foods Store",
-    storeId: 1,
-    storeAvatar: "/lovable-uploads/f5705ca5-1adf-4b7c-a2dd-d2da7d201505.png"
+    categoryEn: "Canned Goods"
   },
   {
     id: 2,
@@ -30,11 +36,7 @@ const marketplaceItems = [
     price: 200,
     image: "/lovable-uploads/323310ee-f642-4338-8f93-ebc78502dc6e.png",
     category: "منتجات الألبان",
-    categoryEn: "Dairy Products",
-    store: "متجر الحليب الطازج",
-    storeEn: "Fresh Milk Store",
-    storeId: 2,
-    storeAvatar: "/lovable-uploads/323310ee-f642-4338-8f93-ebc78502dc6e.png"
+    categoryEn: "Dairy Products"
   },
   {
     id: 3,
@@ -43,11 +45,7 @@ const marketplaceItems = [
     price: 150,
     image: "/lovable-uploads/89cf4604-5de4-40a8-bf4e-f9d7428c70ab.png",
     category: "مشروبات",
-    categoryEn: "Beverages",
-    store: "متجر العصائر الطبيعية",
-    storeEn: "Natural Juice Store",
-    storeId: 3,
-    storeAvatar: "/lovable-uploads/89cf4604-5de4-40a8-bf4e-f9d7428c70ab.png"
+    categoryEn: "Beverages"
   },
   {
     id: 4,
@@ -56,11 +54,7 @@ const marketplaceItems = [
     price: 50,
     image: "/lovable-uploads/0bcc85d2-ea23-4617-9c18-a9b7148ed6fb.png",
     category: "خدمات",
-    categoryEn: "Services",
-    store: "متجر الخدمات",
-    storeEn: "Services Store",
-    storeId: 4,
-    storeAvatar: "/lovable-uploads/0bcc85d2-ea23-4617-9c18-a9b7148ed6fb.png"
+    categoryEn: "Services"
   }
 ];
 
@@ -105,15 +99,34 @@ const Marketplace = () => {
       <Header />
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Page Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold arabic-title mb-4">
-            {isRTL ? "السوق الإلكتروني" : "Digital Marketplace"}
-          </h1>
-          <p className="text-muted-foreground">
-            {isRTL ? "اكتشف منتجات من متاجر محلية مختلفة" : "Discover products from various local stores"}
-          </p>
-        </div>
+        {/* Store Profile Header */}
+        <Card className="mb-8">
+          <CardContent className="p-6">
+            <div className="flex items-center gap-4 mb-4">
+              <Avatar className="h-16 w-16">
+                <AvatarImage src={storeInfo.avatar} alt={isRTL ? storeInfo.name : storeInfo.nameEn} />
+                <AvatarFallback>
+                  <Store className="h-8 w-8" />
+                </AvatarFallback>
+              </Avatar>
+              <div>
+                <h1 className="text-2xl font-bold arabic-title mb-2">
+                  {isRTL ? storeInfo.name : storeInfo.nameEn}
+                </h1>
+                <div className="flex flex-col gap-1 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-2">
+                    <MapPin className="h-4 w-4" />
+                    <span>{isRTL ? storeInfo.location : storeInfo.locationEn}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Phone className="h-4 w-4" />
+                    <span>{storeInfo.phone}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Cart Summary */}
         {cartItems.length > 0 && (
@@ -181,21 +194,6 @@ const Marketplace = () => {
                   <h3 className="font-semibold text-lg mb-2 hover:text-primary transition-colors cursor-pointer">
                     {isRTL ? item.name : item.nameEn}
                   </h3>
-                </Link>
-                
-                {/* Store Info with Profile Picture */}
-                <Link to={`/store/${item.storeId}`}>
-                  <div className="flex items-center gap-2 mb-2 hover:text-primary transition-colors cursor-pointer">
-                    <Avatar className="h-6 w-6">
-                      <AvatarImage src={item.storeAvatar} alt={isRTL ? item.store : item.storeEn} />
-                      <AvatarFallback>
-                        <Store className="h-3 w-3" />
-                      </AvatarFallback>
-                    </Avatar>
-                    <p className="text-sm text-muted-foreground">
-                      {isRTL ? item.store : item.storeEn}
-                    </p>
-                  </div>
                 </Link>
                 
                 <p className="text-primary font-bold text-lg">
